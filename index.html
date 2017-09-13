@@ -58,7 +58,7 @@
   <script type="text/javascript">
     const url = 'http://192.168.15.63:8088/api/avaliacao_realizacao/login?id_realizacao=';
 
-    let scanner = new Instascan.Scanner({ video: document.querySelector('video') });
+    let scanner = new Instascan.Scanner({ video: document.querySelector('video'), mirror: false });
     
     scanner.addListener('scan', function (id_realizacao) {
       window.location.replace(url + id_realizacao);
