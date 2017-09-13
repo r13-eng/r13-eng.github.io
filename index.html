@@ -39,7 +39,7 @@
     <div class="content">
       <div class="row">
         <div class="col-xs-8 col-xs-offset-2">
-          <form method="GET" action="http://192.168.15.63:8088/api/realizacao/login">
+          <form method="GET" action="http://192.168.15.63:8088/api/avaliacao_realizacao/login">
             <div class="form-group ">
               <label class="control-label">PIN</label>
               <input class="form-control" id="pin" name="pin" placeholder="1234" required="">
@@ -52,7 +52,7 @@
   </body>
 
   <script type="text/javascript">
-    const url = 'http://192.168.15.63:8088/api/realizacao/login?id_realizacao=';
+    const url = 'http://192.168.15.63:8088/api/avaliacao_realizacao/login?id_realizacao=';
 
     let scanner = new Instascan.Scanner({ video: document.querySelector('video') });
     
