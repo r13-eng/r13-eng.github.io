@@ -10,25 +10,9 @@
     <link href="assets/css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link href="assets/css/application.css" type="text/css" rel="stylesheet">
     <link href="assets/css/login.css" type="text/css" rel="stylesheet">
-    <script type="text/javascript" src="assets/js/instascan.min.js"></script>
-
-    <style>
-
-      .video {
-        transform: scaleX(-1);
-      }
-      .content {
-        padding: 20px;
-        margin: 0 auto;
-        width: 320px;
-        text-align: center;
-      }
-
-      .preview {
-        text-align: center;
-        padding: 30px 0;
-      }
-    </style>
+    <link href="assets/css/style.css" type="text/css" rel="stylesheet">
+    <link href="assets/css/sweetalert.css" type="text/css" rel="stylesheet">
+    
   </head>
   
   <body>
@@ -36,11 +20,18 @@
       <img src="assets/img/logo.png" alt="logo" class="logo">
     </div>
 
-    <div class="preview">
+    <div id="qrcode-container">
+      <p>Escaneie o código para realizar a autenticação</p>
+  
       <video></video>
+  
+      <br>
+      <p>
+        <a href="#">Autenticar via PIN</a>
+      </p>
     </div>
 
-    <div class="content">
+    <div id="pin-container">
       <div class="row">
         <div class="col-xs-8 col-xs-offset-2">
           <form method="GET" action="https://aula.educat.net.br/api/avaliacao_realizacao/login">
@@ -50,25 +41,17 @@
             </div>
             <input class="btn btn-lg btn-primary btn-block" value="Entrar" type="submit">
           </form>
+
+          <br>
+          <p>
+            <a href="#">Autenticar via QRCode</a>
+          </p>
         </div>
       </div>
     </div>
   </body>
 
-  <script type="text/javascript">
-    const url = 'https://aula.educat.net.br/api/avaliacao_realizacao/login?id_realizacao=';
-
-    let scanner = new Instascan.Scanner({ video: document.querySelector('video'), mirror: false });
-    
-    scanner.addListener('scan', function (id_realizacao) {
-      window.location.replace(url + id_realizacao);
-    });
-
-    Instascan.Camera.getCameras().then(function (cameras) {
-      if (cameras.length == 1) 
-        scanner.start(cameras[0]);
-      if (cameras.length == 2) 
-        scanner.start(cameras[1]);
-    })
-  </script>
+  <script type="text/javascript" src="assets/js/instascan.min.js"></script>
+  <script type="text/javascript" src="assets/js/sweetalert.min.js"></script>
+  <script type="text/javascript" src="assets/js/script.js"></script>
 </html>
