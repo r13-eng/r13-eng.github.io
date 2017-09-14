@@ -20,14 +20,36 @@ Instascan.Camera.getCameras().then(function (cameras) {
     scanner.start(cameras[1]);
 })
 
-document.querySelector("#qrcode-container a").addEventListener("click", function(ev) {
-  ev.preventDefault();
+
+var swithToPIN = function() {
   document.querySelector('#qrcode-container').style.display = 'none';
   document.querySelector('#pin-container').style.display = 'block';
+}
+
+var swithToQRCode = function() {
+  document.querySelector('#qrcode-container').style.display = 'block';
+  document.querySelector('#pin-container').style.display = 'none';
+}
+
+var showError = function() {
+  document.querySelector('#pin-container .form-group').classList.add('has-error');
+}
+
+document.querySelector("#pin-container input").addEventListener("keypress", function(ev) {
+  document.querySelector('#pin-container .form-group').classList.remove('has-error');
+});
+
+document.querySelector("#qrcode-container a").addEventListener("click", function(ev) {
+  ev.preventDefault();
+  swithToPIN()
 });
 
 document.querySelector("#pin-container a").addEventListener("click", function(ev) {
   ev.preventDefault();
-  document.querySelector('#qrcode-container').style.display = 'block';
-  document.querySelector('#pin-container').style.display = 'none';
+  swithToQRCode();
 });
+
+if(window.location.href.indexOf('error') != -1) {
+  swithToPIN();
+  showError();
+}
