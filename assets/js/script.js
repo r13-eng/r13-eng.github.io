@@ -1,4 +1,4 @@
-const url = 'https://aula.educat.net.br/api/avaliacao_realizacao/login?id_realizacao=';
+const url = 'http://cmmg.educat.net.br/api/avaliacao_realizacao/login?id_realizacao=';
 
 let scanner = new Instascan.Scanner({ video: document.querySelector('video'), mirror: false });
 
