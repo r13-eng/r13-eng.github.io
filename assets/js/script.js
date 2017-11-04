@@ -1,4 +1,18 @@
-const url = 'http://cmmg.educat.net.br/api/avaliacao_realizacao/login?id_realizacao=';
+
+var getInstancia = function(){
+  const url = window.location.href.split('?');
+
+  if (url.length == 1)
+    return 'cmmg';
+
+  return url[1];
+}
+
+
+const instancia = getInstancia();
+const url = 'http://' + instancia + '.educat.net.br/api/avaliacao_realizacao/login';
+
+document.querySelector('form').action = url
 
 let scanner = new Instascan.Scanner({ video: document.querySelector('video'), mirror: false });
 
@@ -10,7 +24,7 @@ scanner.addListener('scan', function (id_realizacao) {
     showConfirmButton: false
   });
   
-  window.location.replace(url + id_realizacao);
+  window.location.replace(url + '?id_realizacao=' + id_realizacao);
 });
 
 Instascan.Camera.getCameras().then(function (cameras) {
